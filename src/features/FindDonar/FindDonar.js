@@ -9,6 +9,19 @@ const FindDonar = () => {
                         <div className="donar-search-box">
                             <input className='border-2 border-red-200 rounded-full focus:outline-none w-11/12 lg:w-3/5 h-8 lg:h-10 pl-5 pr-24' type="text" placeholder='Search donar' />
                             <button className='bg-red-400 text-white px-4 lg:px-6 py-1 lg:py-2 lg:font-semibold rounded-full -ml-20 mt-1'><i className="fas fa-search"></i> Find</button>
+                            {/* division  */}
+                            <label for="divisions">Select Division</label>
+                            <select name="divisions" id="divisions" onchange="divisionsList();">
+                                <option disabled selected>Select Division</option>
+                                <option value="Barishal">Barishal</option>
+                                <option value="Chattogram">Chattogram</option>
+                                <option value="Dhaka">Dhaka</option>
+                                <option value="Khulna">Khulna</option>
+                                <option value="Mymensingh">Mymensingh</option>
+                                <option value="Rajshahi">Rajshahi</option>
+                                <option value="Rangpur">Rangpur</option>
+                                <option value="Sylhet">Sylhet</option>
+                            </select>{/* division  */}
                         </div>
                     </div>
                 </div>
