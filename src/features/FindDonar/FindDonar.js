@@ -1,27 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const FindDonar = () => {
+    const [bloodGroupText, setBloodGroupText] = useState('')
+    const [bloodGroup, setBloodGroup] = useState([])
+    const [districtText, setDistrictText] = useState('')
+    const [district, setDistrict] = useState([])
+    const [areaText, setAreaText] = useState('')
+    const [donar, setDonar] = useState([])
+
+    // Filtering Donar From Database 
+        useEffect(() => {
+            fetch(`https://evening-river-70665.herokuapp.com/donar/${bloodGroupText}`)
+            .then(res => res.json())
+            .then(data => setBloodGroup(data))
+        }, [bloodGroupText])
+        useEffect(() => {
+            setDistrict(bloodGroup.filter(data => data.district === districtText))
+        }, [bloodGroup, districtText])
+        useEffect(() => {
+            setDonar(district.filter(data => data.area.includes(areaText)))
+        }, [ areaText, district])
+        console.log(donar)
     return (
         <div>
             <div className="container mx-auto py-14 px-5 lg:px-1">
                 <div className="grid grid-cols-6 mb-10">
                     <div className="col-start-2 col-span-4">
                         <div className="donar-search-box">
-                            <input className='border-2 border-red-200 rounded-full focus:outline-none w-11/12 lg:w-3/5 h-8 lg:h-10 pl-5 pr-24' type="text" placeholder='Search donar' />
-                            <button className='bg-red-400 text-white px-4 lg:px-6 py-1 lg:py-2 lg:font-semibold rounded-full -ml-20 mt-1'><i className="fas fa-search"></i> Find</button>
-                            {/* division  */}
-                            <label for="divisions">Select Division</label>
-                            <select name="divisions" id="divisions" onchange="divisionsList();">
-                                <option disabled selected>Select Division</option>
-                                <option value="Barishal">Barishal</option>
-                                <option value="Chattogram">Chattogram</option>
-                                <option value="Dhaka">Dhaka</option>
-                                <option value="Khulna">Khulna</option>
-                                <option value="Mymensingh">Mymensingh</option>
-                                <option value="Rajshahi">Rajshahi</option>
-                                <option value="Rangpur">Rangpur</option>
-                                <option value="Sylhet">Sylhet</option>
-                            </select>{/* division  */}
+                            <select onChange={e => setBloodGroupText(e.target.value)}>
+                                <option value="o+">O+</option>
+                                <option value="a+">a+</option>
+                                <option value="B+">B+</option>
+                            </select>
+                            <select onChange={e => setDistrictText(e.target.value)}>
+                                <option value="patuakhali">Patuakhali</option>
+                                <option value="thakurgaon">Thakurgaon</option>
+                                <option value="gazipur">Gazipur</option>
+                            </select>
+                            <input onChange={e => setAreaText(e.target.value)} className='border-2 border-red-200 rounded-full focus:outline-none w-11/12 lg:w-3/5 h-8 lg:h-10 pl-5 pr-24' type="text" placeholder='Search donar' />
+                            <button  className='bg-red-400 text-white px-4 lg:px-6 py-1 lg:py-2 lg:font-semibold rounded-full -ml-20 mt-1'><i className="fas fa-search"></i> Find</button>
                         </div>
                     </div>
                 </div>
