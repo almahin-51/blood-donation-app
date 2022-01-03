@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useFirebase from '../../../Hooks/useFirebase';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({})
+    const { loginUser, error } = useFirebase()
 
+    const location = useLocation()
+    const navigate = useNavigate()
 
     // handle login submit
     const takeLoginInput = (e) => {
@@ -15,7 +19,8 @@ const Login = () => {
     }
     const handleLoginSubmit = (e) => {
         e.preventDefault()
-
+        loginUser(loginData.email, loginData.password, location, navigate)
+        console.log(loginData)
     }
     return (
         <div>
@@ -26,6 +31,7 @@ const Login = () => {
                         <form onSubmit={handleLoginSubmit}>
                             <input onChange={takeLoginInput} className='w-3/4 mb-4 h-12 pl-5 focus:outline-none border-b-2 border-red-400 rounded-full' type="email" placeholder='Enter your email' required name='email' /> <br />
                             <input onChange={takeLoginInput} className='w-3/4 mb-4 h-12 pl-5 focus:outline-none border-b-2 border-red-400 rounded-full' type="password" name='password' placeholder='Enter your password' /> <br />
+                            {error && <p className='text-red-500 font-semibold mb-3'>{error}</p>}
                             <button className='bg-red-400 text-white px-10 font-semibold rounded py-2' type='submit'>Login</button>
                         </form>
                         <div>

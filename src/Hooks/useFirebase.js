@@ -30,6 +30,20 @@ const useFirebase = () => {
             }).finally(() => setIsLoading(false))
     }
 
+    // login user
+    const loginUser = (email, password, location, navigate) => {
+        setIsLoading(true)
+        signInWithEmailAndPassword(auth, email, password)
+            .then(userCredential => {
+                const destination = location?.state?.from || '/'
+                navigate(destination)
+                setError('')
+            }).catch(error => {
+                setError(error.message)
+            }).finally(() => setIsLoading(false))
+
+    }
+
 
     // state changed 
     useEffect(() => {
@@ -56,6 +70,7 @@ const useFirebase = () => {
         user,
         error,
         isLoading,
+        loginUser,
         registerUser,
         logOut
     }
