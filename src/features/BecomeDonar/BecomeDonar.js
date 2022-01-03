@@ -1,33 +1,62 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
+import Swal from 'sweetalert2'
 
-const FindDonar = () => {
-    const [bloodGroupText, setBloodGroupText] = useState('')
-    const [bloodGroup, setBloodGroup] = useState([])
-    const [districtText, setDistrictText] = useState('')
-    const [district, setDistrict] = useState([])
-    const [areaText, setAreaText] = useState('')
-    const [donar, setDonar] = useState([])
-
-    // Filtering Donar From Database 
-        useEffect(() => {
-            fetch(`https://evening-river-70665.herokuapp.com/donar/${bloodGroupText}`)
-            .then(res => res.json())
-            .then(data => setBloodGroup(data))
-        }, [bloodGroupText])
-        useEffect(() => {
-            setDistrict(bloodGroup.filter(data => data.district === districtText))
-        }, [bloodGroup, districtText])
-        useEffect(() => {
-            setDonar(district.filter(data => data.area.includes(areaText)))
-        }, [ areaText, district])
-        console.log(donar)
+const BecomeDonar = () => {
+    const [donarData, setDonarData] = useState({})
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'center',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+    // handle form submit 
+    const takeDonarData = e => {
+        const key = e.target.name;
+        const value = e.target.value;
+        const newValue = {...donarData}
+        newValue[key] = value;
+        setDonarData(newValue)
+    }
+    const handleDonarSubmit = (e) => {
+        const data = {
+            ...donarData,
+            creationdate: new Date()
+        }
+        fetch('https://evening-river-70665.herokuapp.com/donar', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(data)
+        }).then(res => res.json())
+        .then(data => {
+            if (data.insertedId) {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Signed in successfully'
+                  })
+            }
+        })
+        e.preventDefault()
+    }
     return (
         <div>
-            <div className="container mx-auto py-14 px-5 lg:px-1">
-                <div className="grid grid-cols-6 mb-10">
-                    <div className="col-start-2 col-span-4">
-                        <div className="donar-search-box">
-                            <select onChange={e => setBloodGroupText(e.target.value)}>
+            <div className='container mx-auto py-20'>
+                <div className="grid grid-cols-2 gap-4">
+                    <div className='text-left'>
+                        <h2 className='text-4xl '>Want to be a donar?</h2>
+                        <h3 className='my-5'>Please Register to join as a donar</h3>
+                        <div className="donar-registration">
+                            <form onSubmit={handleDonarSubmit}>
+                                <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="text" placeholder='Your Name' name='name'/> <br />
+                                <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="email" placeholder='Your Email' name='email'/> <br />
+                                <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="number" placeholder='Your Number' name='phone' /> <br />
+                                <label className='mb-1 inline-block' htmlFor="blood">Your Blood Group</label><br />
+                                <select required onChange={takeDonarData} name="group" id="blood">
                                     <option selected disabled>Select Blood Group</option>
                                     <option value="a+">A+</option>
                                     <option value="a-">A-</option>
@@ -37,9 +66,10 @@ const FindDonar = () => {
                                     <option value="ab-">AB-</option>
                                     <option value="o+">O+</option>
                                     <option value="o-">O-</option>
-                            </select>
-                            <select onChange={e => setDistrictText(e.target.value)}>
-                            <option disabled selected>Select District</option>
+                                </select> <br />
+                                <label className='mt-3 mb-1 inline-block' htmlFor="district">Your District</label> <br />
+                                <select required onChange={takeDonarData} className='text-left' name="district" id="district"> <br />
+                                    <option disabled selected>Select District</option>
                                     <option value='Bagerhat'>Bagerhat</option>
                                     <option value='Bandarban'>Bandarban</option>
                                     <option value='Barguna'>Barguna</option>
@@ -103,49 +133,16 @@ const FindDonar = () => {
                                     <option value='Sunamganj'>Sunamganj</option>
                                     <option value='Sylhet'>Sylhet</option>
                                     <option value='Tangail'>Tangail</option>
-                                    <option value='Thakurgaon'>Thakurgaon</option> 
-                             </select>
-                            <input onChange={e => setAreaText(e.target.value)} className='border-2 border-red-200 rounded-full focus:outline-none w-11/12 lg:w-3/5 h-8 lg:h-10 pl-5 pr-24' type="text" placeholder='Search donar' />
-                            <button  className='bg-red-400 text-white px-4 lg:px-6 py-1 lg:py-2 lg:font-semibold rounded-full -ml-20 mt-1'><i className="fas fa-search"></i> Find</button>
+                                    <option value='Thakurgaon'>Thakurgaon</option>                                
+                                    </select> <br />
+                                <label className='mt-3 mb-1 inline-block' htmlFor="area" >Area*</label> <br />
+                                <textarea required onChange={takeDonarData} className='border-2 p-2 border-red-200 rounded w-1/2 h-12 focus:outline-none' name="area" id="area"></textarea> <br />
+                                <button className='mt-5 bg-red-400 text-white px-8 py-2 rounded' type='submit'>Submit Information</button>
+                            </form>
                         </div>
                     </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-center">
-                    <div className="single-donar border-2 border-red-100 rounded flex items-center p-2">
-                        <img className='w-24 rounded-full h-24' src="https://image.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg" alt="donar profile" />
-                        <div className="donar-text ml-5 text-left">
-                            <h4 className='text-lg'>Monib Bormon</h4>
-                            <h4>Blood Group: <span className='font-semibold'>A<sup>+</sup>  (A Positive)</span></h4>
-                            <p>Location: <span className='font-semibold'>Gazipur,Dhaka</span></p>
-                            <button className='bg-red-400 text-white font-semibold px-2 rounded mt-3'>Contact Donar</button>
-                        </div>
-                    </div>
-                    <div className="single-donar border-2 border-red-100 rounded flex items-center p-2">
-                        <img className='w-24 rounded-full h-24' src="https://image.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg" alt="donar profile" />
-                        <div className="donar-text ml-5 text-left">
-                            <h4 className='text-lg'>Mohammad Arif</h4>
-                            <h4>Blood Group: <span className='font-semibold'>O<sup>+</sup>  (O Positive)</span></h4>
-                            <p>Location: <span className='font-semibold'>Munshigonj,Dhaka</span></p>
-                            <button className='bg-red-400 text-white font-semibold px-2 rounded mt-3'>Contact Donar</button>
-                        </div>
-                    </div>
-                    <div className="single-donar border-2 border-red-100 rounded flex items-center p-2">
-                        <img className='w-24 rounded-full h-24' src="https://image.freepik.com/free-photo/photo-attractive-ginger-man-with-satisfied-expression-has-thick-beard_273609-18615.jpg" alt="donar profile" />
-                        <div className="donar-text ml-5 text-left">
-                            <h4 className='text-lg'>Mahin Rahman</h4>
-                            <h4>Blood Group: <span className='font-semibold'>B<sup>-</sup>  (B Negetive)</span></h4>
-                            <p>Location: <span className='font-semibold'>Thakurgaon,Rangpur</span></p>
-                            <button className='bg-red-400 text-white font-semibold px-2 rounded mt-3'>Contact Donar</button>
-                        </div>
-                    </div>
-                    <div className="single-donar border-2 border-red-100 rounded flex items-center p-2">
-                        <img className='w-24 rounded-full h-24' src="https://image.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg" alt="donar profile" />
-                        <div className="donar-text ml-5 text-left">
-                            <h4 className='text-lg'>Shakil</h4>
-                            <h4>Blood Group: <span className='font-semibold'>AB<sup>+</sup>  (AB Positive)</span></h4>
-                            <p>Location: <span className='font-semibold'>Sadar,Chittagong</span></p>
-                            <button className='bg-red-400 text-white font-semibold px-2 rounded mt-3'>Contact Donar</button>
-                        </div>
+                    <div className='become-donar-bg'>
+                        <img src="https://image.freepik.com/free-vector/organic-flat-world-blood-donor-day-illustration_23-2148939040.jpg" alt="" />
                     </div>
                 </div>
             </div>
@@ -153,4 +150,4 @@ const FindDonar = () => {
     );
 };
 
-export default FindDonar;
+export default BecomeDonar;
