@@ -8,7 +8,6 @@ import Navbar from "./features/Navbar/Navbar";
 import Login from './features/Authentication/Login/Login';
 import Registration from './features/Authentication/Registration/Registration';
 import BecomeDonar from './features/BecomeDonar/BecomeDonar';
-import FindDonar from './features/FindDonar/FindDonar';
 
 function App() {
   return (
@@ -17,6 +16,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='home' element={<Home />} />
           <Route path='find-donar' element={<FindDonar />} />
           <Route path='become-donar' element={<BecomeDonar />} />
           <Route path='login' element={<Login />} />
