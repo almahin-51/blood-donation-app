@@ -6,6 +6,7 @@ import FindDonar from "./features/FindDonar/FindDonar";
 import Home from "./features/Home/Home";
 import Navbar from "./features/Navbar/Navbar";
 import Login from './features/Authentication/Login/Login';
+import PrivateRoute from './features/Authentication/PrivateRoute/PrivateRoute';
 import Registration from './features/Authentication/Registration/Registration';
 import BecomeDonar from './features/BecomeDonar/BecomeDonar';
 
@@ -18,7 +19,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='home' element={<Home />} />
           <Route path='find-donar' element={<FindDonar />} />
-          <Route path='become-donar' element={<BecomeDonar />} />
+          <Route path='become-donar' element={<PrivateRoute><BecomeDonar /></PrivateRoute>} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Registration />} />
         </Routes>
