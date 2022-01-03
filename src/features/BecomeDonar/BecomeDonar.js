@@ -58,13 +58,71 @@ const BecomeDonar = () => {
                                 <label className='mt-3 mb-1 inline-block' htmlFor="district">Your District</label> <br />
                                 <select onChange={e => setDistrict(e.target.value)} className='text-left' name="district" id="district"> <br />
                                     <option disabled selected>Select District</option>
-                                    <option value="Dhaka">Dhaka</option>
-                                    <option value="Gazipur">Gazipur</option>
-                                    <option value="Narayangonj">Narayangonj</option>
-                                    <option value="Potuakhali">Potuakhali</option>
-                                    <option value="Rangpur">Rangpur</option>
-                                    <option value="Mirpur">Mirpur</option>
-                                </select> <br />
+                                    <option value='Bagerhat'>Bagerhat</option>
+                                    <option value='Bandarban'>Bandarban</option>
+                                    <option value='Barguna'>Barguna</option>
+                                    <option value='Barisal'>Barisal</option>
+                                    <option value='Bhola'>Bhola</option>
+                                    <option value='Bogra'>Bogra</option>
+                                    <option value='Brahmanbaria'>Brahmanbaria</option>
+                                    <option value='Chandpur'>Chandpur</option>
+                                    <option value='Chittagong'>Chittagong</option>
+                                    <option value='Chuadanga'>Chuadanga</option>
+                                    <option value='Comilla'>Comilla</option>
+                                    <option value='CoxsBazar'>Cox'sBazar</option>
+                                    <option value='Dhaka'>Dhaka</option>
+                                    <option value='Dinajpur'>Dinajpur</option>
+                                    <option value='Faridpur'>Faridpur</option>
+                                    <option value='Feni'>Feni</option>
+                                    <option value='Gaibandha'>Gaibandha</option>
+                                    <option value='Gazipur'>Gazipur</option>
+                                    <option value='Gopalganj'>Gopalganj</option>
+                                    <option value='Habiganj'>Habiganj</option>
+                                    <option value='Jamalpur'>Jamalpur</option>
+                                    <option value='Jessore'>Jessore</option>
+                                    <option value='Jhalokati'>Jhalokati</option>
+                                    <option value='Jhenaidah'>Jhenaidah</option>
+                                    <option value='Joypurhat'>Joypurhat</option>
+                                    <option value='Khagrachari'>Khagrachari</option>
+                                    <option value='Khulna'>Khulna</option>
+                                    <option value='Kishoreganj'>Kishoreganj</option>
+                                    <option value='Kurigram'>Kurigram</option>
+                                    <option value='Kushtia'>Kushtia</option>
+                                    <option value='Lakshmipur'>Lakshmipur</option>
+                                    <option value='Lalmonirhat'>Lalmonirhat</option>
+                                    <option value='Madaripur'>Madaripur</option>
+                                    <option value='Magura'>Magura</option>
+                                    <option value='Manikganj'>Manikganj</option>
+                                    <option value='Maulvibazar'>Maulvibazar</option>
+                                    <option value='Meherpur'>Meherpur</option>
+                                    <option value='Munshiganj'>Munshiganj</option>
+                                    <option value='Mymensingh'>Mymensingh</option>
+                                    <option value='Naogaon'>Naogaon</option>
+                                    <option value='Narail'>Narail</option>
+                                    <option value='Narayanganj'>Narayanganj</option>
+                                    <option value='Narsingdi'>Narsingdi</option>
+                                    <option value='Natore'>Natore</option>
+                                    <option value='Nawabganj'>Nawabganj</option>
+                                    <option value='Netrokona'>Netrokona</option>
+                                    <option value='Nilphamari'>Nilphamari</option>
+                                    <option value='Noakhali'>Noakhali</option>
+                                    <option value='Pabna'>Pabna</option>
+                                    <option value='Panchagarh'>Panchagarh</option>
+                                    <option value='Patuakhali'>Patuakhali</option>
+                                    <option value='Pirojpur'>Pirojpur</option>
+                                    <option value='Rajbari'>Rajbari</option>
+                                    <option value='Rajshahi'>Rajshahi</option>
+                                    <option value='Rangamati'>Rangamati</option>
+                                    <option value='Rangpur'>Rangpur</option>
+                                    <option value='Satkhira'>Satkhira</option>
+                                    <option value='Shariatpur'>Shariatpur</option>
+                                    <option value='Sherpur'>Sherpur</option>
+                                    <option value='Sirajgonj'>Sirajgonj</option>
+                                    <option value='Sunamganj'>Sunamganj</option>
+                                    <option value='Sylhet'>Sylhet</option>
+                                    <option value='Tangail'>Tangail</option>
+                                    <option value='Thakurgaon'>Thakurgaon</option>                                
+                                    </select> <br />
                                 <label className='mt-3 mb-1 inline-block' htmlFor="area">Area*</label> <br />
                                 <textarea onChange={e => setArea(e.target.value)} className='border-2 p-2 border-red-200 rounded w-1/2 h-12 focus:outline-none' name="area" id="area"></textarea> <br />
                                 <button onClick={handleDonarSubmit} className='mt-5 bg-red-400 text-white px-8 py-2 rounded' type='submit'>Submit Information</button>
