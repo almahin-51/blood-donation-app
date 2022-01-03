@@ -1,0 +1,49 @@
+.navbar-nav ul li {
+  margin: 10px;
+  padding: 8px 5px;
+}
+
+.navbar {
+  position: relative;
+}
+
+.sm-drop-down {
+  border: 1px solid #ccc;
+  box-shadow: 0px 5px 10px 0px #ccc;
+  width: 170px;
+  padding: 20px;
+  border-radius: 5px;
+  position: absolute;
+  top: 95%;
+  right: 0.5rem;
+  display: none;
+}
+
+.actives {
+  display: block !important;
+}
+
+.sm-drop-down ul li {
+  margin: 5px;
+}
+
+.lg-drop-down {
+  border: 1px solid #ccc;
+  box-shadow: 0px 5px 10px 0px #ccc;
+  width: 170px;
+  padding: 20px;
+  border-radius: 5px;
+  position: absolute;
+  top: 95%;
+  right: 0.5rem;
+  display: none;
+}
+.lg-drop-down ul li {
+  margin: 5px;
+}
+
+@media (max-width: 425px) {
+  .navbar-nav {
+    display: none;
+  }
+}
