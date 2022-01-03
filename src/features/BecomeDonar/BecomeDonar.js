@@ -46,14 +46,14 @@ const BecomeDonar = () => {
                                 <label className='mb-1 inline-block' htmlFor="blood">Your Blood Group</label><br />
                                 <select onChange={e => setBlood(e.target.value)} name="blood" id="blood">
                                     <option selected disabled>Select Blood Group</option>
-                                    <option value="A+">A+</option>
-                                    <option value="A-">A-</option>
-                                    <option value="B+">B+</option>
-                                    <option value="B-">B-</option>
-                                    <option value="AB+">AB+</option>
-                                    <option value="AB+">AB-</option>
-                                    <option value="O+">O+</option>
-                                    <option value="O+">O+</option>
+                                    <option value="a+">A+</option>
+                                    <option value="a-">A-</option>
+                                    <option value="b+">B+</option>
+                                    <option value="b-">B-</option>
+                                    <option value="ab+">AB+</option>
+                                    <option value="ab-">AB-</option>
+                                    <option value="o+">O+</option>
+                                    <option value="o-">O-</option>
                                 </select> <br />
                                 <label className='mt-3 mb-1 inline-block' htmlFor="district">Your District</label> <br />
                                 <select onChange={e => setDistrict(e.target.value)} className='text-left' name="district" id="district"> <br />
