@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { FcGoogle } from 'react-icons/fc';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useFirebase from '../../../Hooks/useFirebase';
 
 const Registration = () => {
     const [registerData, setRegisterData] = useState({})
-    const { registerUser, error } = useFirebase()
+    const { registerUser, error, signInWithGoogle } = useFirebase()
 
     const navigate = useNavigate()
+    const location = useLocation()
 
     // handle login submit
     const takeRegisterInput = (e) => {
@@ -25,6 +27,10 @@ const Registration = () => {
         registerUser(registerData.email, registerData.password, registerData.name, navigate)
         console.log(registerData)
     }
+    // handle google sign in
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, navigate)
+    }
     return (
         <div>
             <div className="container mx-auto">
@@ -42,7 +48,7 @@ const Registration = () => {
                         <div>
                             <h3 className='mt-10'>Already have an account? <Link className='text-red-500 font-semibold underline' to='/login'>Login here.</Link></h3>
                             <p className='text-2xl my-3'>Or</p>
-                            <button>Google</button>
+                            <button onClick={handleGoogleSignIn} className='text-2xl shadow-lg rounded px-5 py-1'>Continue with <FcGoogle className='inline-block text-4xl' /></button>
                         </div>
                     </div>
                     <div className="login-bg">
