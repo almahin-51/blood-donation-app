@@ -11,7 +11,7 @@ import BecomeDonar from "./features/BecomeDonar/BecomeDonar";
 import Dashboard from "./features/Dashboard/Dashboard";
 import Profile from "./features/Dashboard/Profile/Profile";
 import Address from "./features/Dashboard/Address/Address";
-import Verify from "./features/Dashboard/Varify/Verify";
+import Verify from "./features/Dashboard/Verify/Verify";
 
 function App() {
   return (
