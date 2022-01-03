@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useFirebase from '../../../Hooks/useFirebase';
 
 const Registration = () => {
     const [registerData, setRegisterData] = useState({})
+    const { registerUser, error } = useFirebase()
 
+    const navigate = useNavigate()
 
     // handle login submit
     const takeRegisterInput = (e) => {
@@ -15,9 +18,12 @@ const Registration = () => {
     }
     const handleRegisterSubmit = (e) => {
         e.preventDefault()
-
+        if (registerData.password !== registerData.password2) {
+            alert('Password didnot match')
+            return
+        }
+        registerUser(registerData.email, registerData.password, registerData.name, navigate)
         console.log(registerData)
-
     }
     return (
         <div>
@@ -30,6 +36,7 @@ const Registration = () => {
                             <input onChange={takeRegisterInput} className='w-3/4 mb-4 h-12 pl-5 focus:outline-none border-b-2 border-red-400 rounded-full' type="email" placeholder='Enter your email' required name='email' /> <br />
                             <input onChange={takeRegisterInput} className='w-3/4 mb-4 h-12 pl-5 focus:outline-none border-b-2 border-red-400 rounded-full' type="password" name='password' placeholder='Enter your password' /> <br />
                             <input onChange={takeRegisterInput} className='w-3/4 mb-4 h-12 pl-5 focus:outline-none border-b-2 border-red-400 rounded-full' type="password" name='password2' placeholder='Re-Enter your password' /> <br />
+                            {error && <p className='text-red-500 font-semibold mb-3'>{error}</p>}
                             <button className='bg-red-400 text-white px-10 font-semibold rounded py-2' type='submit'>Register</button>
                         </form>
                         <div>
