@@ -1,14 +1,13 @@
-
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import FindDonar from "./features/FindDonar/FindDonar";
 import Home from "./features/Home/Home";
 import Navbar from "./features/Navbar/Navbar";
-import Login from './features/Authentication/Login/Login';
-import Registration from './features/Authentication/Registration/Registration';
-import BecomeDonar from './features/BecomeDonar/BecomeDonar';
-import FindDonar from './features/FindDonar/FindDonar';
+import Login from "./features/Authentication/Login/Login";
+import Registration from "./features/Authentication/Registration/Registration";
+import BecomeDonar from "./features/BecomeDonar/BecomeDonar";
+import Dashboard from "./features/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -16,11 +15,12 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='find-donar' element={<FindDonar />} />
-          <Route path='become-donar' element={<BecomeDonar />} />
-          <Route path='login' element={<Login />} />
-          <Route path='register' element={<Registration />} />
+          <Route path="/" element={<Home />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="find-donar" element={<FindDonar />} />
+          <Route path="become-donar" element={<BecomeDonar />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Registration />} />
         </Routes>
       </BrowserRouter>
     </div>
