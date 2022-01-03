@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useFirebase from "../../Hooks/useFirebase";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(true);
+  const { user, logOut } = useFirebase()
 
   return (
     <div className="navbar">
@@ -54,14 +56,16 @@ const Navbar = () => {
 
       <div className={toggle ? "lg-drop-down" : "lg-drop-down actives"}>
         <ul>
-          <p>Welcome</p>
+          <p>Welcome {user.displayName}</p>
           <li>
             <Link to={"/dashboard"}>Dashboard</Link>
           </li>
-          <button className=" px-4 py-2 my-2 mx-auto rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200">
-            <i className="far fa-user mr-2"></i>
-            LogOut
-          </button>
+          <Link to='/'>
+            <button onClick={logOut} className=" px-4 py-2 my-2 mx-auto rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200">
+              <i className="far fa-user mr-2"></i>
+              LogOut
+            </button>
+          </Link>
         </ul>
       </div>
     </div>
