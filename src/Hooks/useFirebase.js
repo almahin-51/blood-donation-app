@@ -1,5 +1,5 @@
 import firebaseInit from '../Firebase/firebase.init';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useEffect, useState } from 'react';
 
 // firebase init 
@@ -11,6 +11,7 @@ const useFirebase = () => {
 
     // get auth 
     const auth = getAuth()
+    const googleProvider = new GoogleAuthProvider()
 
     // register user 
     const registerUser = (email, password, name, navigate) => {
@@ -20,6 +21,8 @@ const useFirebase = () => {
                 setError('')
                 const newUser = { email, displayName: name }
                 setUser(newUser)
+                // save user to database
+                saveUser(email, name, "POST")
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => { })
@@ -44,6 +47,21 @@ const useFirebase = () => {
 
     }
 
+    // google login
+    const signInWithGoogle = (location, navigate) => {
+        setIsLoading(true)
+        signInWithPopup(auth, googleProvider)
+            .then(result => {
+                const user = result.user;
+                //save user to database
+                saveUser(user.email, user.displayName, 'PUT')
+                setError('')
+                const destination = location?.state?.from || '/';
+                navigate(destination)
+            }).catch(error => { setError(error.message) })
+            .finally(() => setIsLoading(false))
+    }
+
 
     // state changed 
     useEffect(() => {
@@ -66,12 +84,25 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false))
     }
 
+    // save user to database
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName }
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        }).then(() => { })
+    }
+
     return {
         user,
         error,
         isLoading,
         loginUser,
         registerUser,
+        signInWithGoogle,
         logOut
     }
 
