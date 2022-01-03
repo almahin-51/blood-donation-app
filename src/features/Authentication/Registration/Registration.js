@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useFirebase from '../../../Hooks/useFirebase';
 
 const Registration = () => {
     const [registerData, setRegisterData] = useState({})
+    const { registerUser } = useFirebase()
 
+    const navigate = useNavigate()
 
     // handle login submit
     const takeRegisterInput = (e) => {
@@ -15,9 +18,12 @@ const Registration = () => {
     }
     const handleRegisterSubmit = (e) => {
         e.preventDefault()
-
+        if (registerData.password !== registerData.password2) {
+            alert('Password didnot match')
+            return
+        }
+        registerUser(registerData.email, registerData.password, registerData.name, navigate)
         console.log(registerData)
-
     }
     return (
         <div>
