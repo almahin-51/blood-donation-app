@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 
 const BecomeDonar = () => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
-    const [blood, setBlood] = useState('')
-    const [district, setDistrict] = useState('')
-    const [area, setArea] = useState('')
+    const [donarData, setDonarData] = useState({})
 
 
-    const data = {
-        name,
-        email,
-        phone,
-        blood,
-        district,
-        area
-    }
     // handle form submit 
+    const takeDonarData = e => {
+        const key = e.target.name;
+        const value = e.target.value;
+        const newValue = {...donarData}
+        newValue[key] = value;
+        setDonarData(newValue)
+    }
     const handleDonarSubmit = (e) => {
-        e.preventDefault()
+        const data = {
+            ...donarData,
+            creationdate: new Date()
+        }
         fetch('https://evening-river-70665.herokuapp.com/donar', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data)
         }).then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    alert('Congrats! You made it.')
-                }
-            })
+        .then(data => {
+            if (data.insertedId) {
+                alert('Congrats! You made it.')
+            }
+        })
+        e.preventDefault()
     }
     return (
         <div>
@@ -39,12 +37,12 @@ const BecomeDonar = () => {
                         <h2 className='text-4xl '>Want to be a donar?</h2>
                         <h3 className='my-5'>Please Register to join as a donar</h3>
                         <div className="donar-registration">
-                            <form>
-                                <input onChange={e => setName(e.target.value)} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="text" placeholder='Your Name' /> <br />
-                                <input onChange={e => setEmail(e.target.value)} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="email" placeholder='Your Email' /> <br />
-                                <input onChange={e => setPhone(e.target.value)} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="number" placeholder='Your Number' /> <br />
+                            <form onSubmit={handleDonarSubmit}>
+                                <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="text" placeholder='Your Name' name='name'/> <br />
+                                <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="email" placeholder='Your Email' name='email'/> <br />
+                                <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="number" placeholder='Your Number' name='phone' /> <br />
                                 <label className='mb-1 inline-block' htmlFor="blood">Your Blood Group</label><br />
-                                <select onChange={e => setBlood(e.target.value)} name="blood" id="blood">
+                                <select required onChange={takeDonarData} name="group" id="blood">
                                     <option selected disabled>Select Blood Group</option>
                                     <option value="a+">A+</option>
                                     <option value="a-">A-</option>
@@ -56,7 +54,7 @@ const BecomeDonar = () => {
                                     <option value="o-">O-</option>
                                 </select> <br />
                                 <label className='mt-3 mb-1 inline-block' htmlFor="district">Your District</label> <br />
-                                <select onChange={e => setDistrict(e.target.value)} className='text-left' name="district" id="district"> <br />
+                                <select required onChange={takeDonarData} className='text-left' name="district" id="district"> <br />
                                     <option disabled selected>Select District</option>
                                     <option value='Bagerhat'>Bagerhat</option>
                                     <option value='Bandarban'>Bandarban</option>
@@ -123,9 +121,9 @@ const BecomeDonar = () => {
                                     <option value='Tangail'>Tangail</option>
                                     <option value='Thakurgaon'>Thakurgaon</option>                                
                                     </select> <br />
-                                <label className='mt-3 mb-1 inline-block' htmlFor="area">Area*</label> <br />
-                                <textarea onChange={e => setArea(e.target.value)} className='border-2 p-2 border-red-200 rounded w-1/2 h-12 focus:outline-none' name="area" id="area"></textarea> <br />
-                                <button onClick={handleDonarSubmit} className='mt-5 bg-red-400 text-white px-8 py-2 rounded' type='submit'>Submit Information</button>
+                                <label className='mt-3 mb-1 inline-block' htmlFor="area" >Area*</label> <br />
+                                <textarea required onChange={takeDonarData} className='border-2 p-2 border-red-200 rounded w-1/2 h-12 focus:outline-none' name="area" id="area"></textarea> <br />
+                                <button className='mt-5 bg-red-400 text-white px-8 py-2 rounded' type='submit'>Submit Information</button>
                             </form>
                         </div>
                     </div>
