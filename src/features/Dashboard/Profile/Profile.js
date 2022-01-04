@@ -25,7 +25,7 @@ const Profile = () => {
           />
           {donar?.group ? (
             <button className="mt-3">
-              Verified Donar<i class="fas fa-check text-blue-500 ml-2"></i>
+              Verified Donar<i className="fas fa-check text-blue-500 ml-2"></i>
             </button>
           ) : (
             <Link
