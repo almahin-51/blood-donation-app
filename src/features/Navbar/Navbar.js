@@ -9,11 +9,11 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(true);
   const [toggle2, setToggle2] = useState(false);
 
-  const { user, logOut } = useAuth()
+  const { user, logOut } = useAuth();
   const handleLogOut = () => {
-    logOut()
-    setToggle(!toggle)
-  }
+    logOut();
+    setToggle(!toggle);
+  };
   return (
     <div className="navbar mx-8 sm:mx-16 py-3">
       <div className="navbar-nav flex justify-between items-center">
@@ -42,17 +42,30 @@ const Navbar = () => {
               <Link to={"/contact"}>Contact Us</Link>
             </li>
           </ul>
-          {user.displayName ? <img onClick={() => setToggle(!toggle)} className="nav-profile-img" src={user.photoURL || "https://i.postimg.cc/FHjjxnrd/images.png"} alt="" /> : <Link to='/login'
-            className=" px-4 py-2 my-2 mr-2 rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200">
-            <p><i className="far fa-user mr-2"></i>LogIn</p>
-          </Link>}
+          {user.displayName ? (
+            <img
+              onClick={() => setToggle(!toggle)}
+              className="nav-profile-img"
+              src={user.photoURL || "https://i.postimg.cc/FHjjxnrd/images.png"}
+              alt=""
+            />
+          ) : (
+            <Link
+              to="/login"
+              className=" px-4 py-2 my-2 mr-2 rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200"
+            >
+              <p>
+                <i className="far fa-user mr-2"></i>LogIn
+              </p>
+            </Link>
+          )}
         </div>
         <div
           onClick={() => setToggle2(!toggle2)}
           className="menu-bar sm:hidden"
         >
           <button className="m-0">
-            <i class="fas fa-bars text-2xl"></i>
+            <i className="fas fa-bars text-2xl"></i>
           </button>
         </div>
       </div>
@@ -80,10 +93,13 @@ const Navbar = () => {
       <div className={toggle ? "lg-drop-down" : "lg-drop-down actives"}>
         <ul>
           <li>
-            <Link to={"/dashboard"}>Dashboard</Link>
+            <Link to={"/dashboard/profile"}>Dashboard</Link>
           </li>
-          <Link to='/'>
-            <button onClick={handleLogOut} className=" px-4 py-2 my-2 mx-auto rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200">
+          <Link to="/">
+            <button
+              onClick={handleLogOut}
+              className=" px-4 py-2 my-2 mx-auto rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200"
+            >
               <i className="far fa-user mr-2"></i>
               LogOut
             </button>

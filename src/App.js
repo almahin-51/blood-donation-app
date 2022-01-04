@@ -25,8 +25,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="home" element={<Home />} />
           <Route path="donar" element={<FindDonar />} />
-          <Route path='/about' element={<AboutUs />} />
-          <Route path='/contact' element={<Contact />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
           <Route
             path="become-donar"
             element={
@@ -37,18 +37,32 @@ function App() {
           />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Registration />} />
-          <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          >
             <Route exact path="/dashboard" element={<Profile />} />
             <Route path="profile" element={<Profile />} />
             <Route path="address" element={<Address />} />
             <Route path="verify" element={<Verify />} />
           </Route>
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path='home' element={<Home />} />
-          <Route path='donar' element={<FindDonar />} />
-          <Route path='become-donar' element={<PrivateRoute><BecomeDonar /></PrivateRoute>} />
-          <Route path='login' element={<Login />} />
-          <Route path='register' element={<Registration />} />
+          <Route path="home" element={<Home />} />
+          <Route path="donar" element={<FindDonar />} />
+          <Route
+            path="become-donar"
+            element={
+              <PrivateRoute>
+                <BecomeDonar />
+              </PrivateRoute>
+            }
+          />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Registration />} />
         </Routes>
         <Footer />
       </BrowserRouter>

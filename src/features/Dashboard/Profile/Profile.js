@@ -9,10 +9,10 @@ const Profile = () => {
   console.log(donar);
   return (
     <div className="w-11/12 mx-auto sm:w-10/12 mt-16 sm:mt-0 shadow-2xl">
-      <div className="flex justify-between p-3 border-b-2">
+      <div className="flex justify-between py-2 px-5 border-b-2">
         <h1 className="text-2xl font-bold">My Profile</h1>
         <button className="text-red-500">
-          <i class="fas fa-pencil-alt mr-2"></i>
+          <i className="fas fa-pencil-alt mr-2"></i>
           Edit
         </button>
       </div>

@@ -1,10 +1,9 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-import Profile from "./Profile/Profile";
 import "./Dashboard.css";
 const Dashboard = () => {
-  const {logOut} = useAuth();
+  const { logOut } = useAuth();
   return (
     <div className="dashboard sm:flex mx-2 md:mx-12 sm:space-x-3 my-5">
       <div className="aside w-11/12 mx-auto mt-6 sm:mt-0 sm:w-64 rounded-md shadow-2xl sm:mx-0">
@@ -42,8 +41,8 @@ const Dashboard = () => {
               Verify
             </NavLink>
           </li>
-          <button onClick={logOut}>
-            <i class="fas fa-sign-out-alt mr-3"></i>
+          <button>
+            <i className="fas fa-sign-out-alt mr-3"></i>
             LogOut
           </button>
         </ul>
