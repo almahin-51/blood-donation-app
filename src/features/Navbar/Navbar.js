@@ -80,10 +80,32 @@ const Navbar = () => {
           <li>
             <Link to={"/contact"}>Contact Us</Link>
           </li>
-          <button className=" px-4 py-2 my-2 mx-auto rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200">
+          {user.displayName ? (
+            <>
+            <hr />
+            <img
+              className="nav-profile-img mt-2  mx-auto "
+              src={user.photoURL || "https://i.postimg.cc/FHjjxnrd/images.png"}
+              alt=""
+            />
+            <Link to={"/dashboard/profile"}>Dashboard</Link>
+            <button
+            onClick={handleLogOut}
+            className=" px-4 py-2 my-2 mx-auto rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200"
+          >
             <i className="far fa-user mr-2"></i>
-            LogIn
-          </button>
+            LogOut
+          </button></>
+          ) : (
+            <Link
+              to="/login"
+              className=" px-4 py-2 my-2 mr-2 rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200"
+            >
+              <p>
+                <i className="far fa-user mr-2"></i>LogIn
+              </p>
+            </Link>
+          )}
         </ul>
       </div>
 
