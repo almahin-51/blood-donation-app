@@ -4,7 +4,7 @@ import useAuth from '../../Hooks/useAuth';
 
 const BecomeDonar = () => {
     const { user } = useAuth()
-    const [donarData, setDonarData] = useState({ name: user.displayName, email: user.email })
+    const [donarData, setDonarData] = useState({ name: user.displayName, email: user.email, image: user.photoURL })
     const Toast = Swal.mixin({
         toast: true,
         position: 'center',

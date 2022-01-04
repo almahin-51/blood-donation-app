@@ -124,7 +124,7 @@ const FindDonar = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-center">
                     {
                         donar.map(data => <div key={data._id} className="single-donar rounded flex items-center p-2">
-                            <img className='w-24 rounded-full h-24 donar-profile-img' src="https://i.ibb.co/svZfJ6q/wells-chan-l3hwxn-GJXn8-unsplash.jpg" alt="donar profile" />
+                            <img className='w-24 rounded-full h-24 donar-profile-img' src={data.image ? data.image : 'https://i.ibb.co/svZfJ6q/wells-chan-l3hwxn-GJXn8-unsplash.jpg'} alt="donar profile" />
                             <div className="donar-text ml-5 text-left">
                                 <h4 className='text-lg'>{data.name}</h4>
                                 <h4>Blood Group: <span className='font-bold capitalize text-red-500'>{data.group}</span></h4>
