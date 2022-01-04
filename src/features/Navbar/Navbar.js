@@ -15,7 +15,7 @@ const Navbar = () => {
     setToggle(!toggle)
   }
   return (
-    <div className="navbar mx-8 sm:mx-16 mt-4">
+    <div className="navbar mx-8 sm:mx-16 py-3">
       <div className="navbar-nav flex justify-between items-center">
         <div className="logo">
           <h1 className="font-bold text-2xl">
@@ -31,7 +31,7 @@ const Navbar = () => {
               <Link to={"/home"}>Home</Link>
             </li>
             <li>
-              <Link to={"/donar"}>Donar</Link>
+              <Link to={"/donar"}>Find Donar</Link>
             </li>
             <li>
               <Link to={"/about"}>About</Link>
