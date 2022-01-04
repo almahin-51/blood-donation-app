@@ -23,7 +23,7 @@ const Profile = () => {
             src={user.photoURL || "https://i.postimg.cc/FHjjxnrd/images.png"}
             alt=""
           />
-          <Link to='/become-donar' className="btn inline-block hover:bg-red-500 hover:text-white hover:border-red-500 mt-4">
+          <Link to='/become-donar' className="btn inline-block hover:bg-red-500 hover:text-white hover:border-red-500 mt-4 transition-all duration-300 font-semibold">
             Become a Donar
           </Link>
         </div>
