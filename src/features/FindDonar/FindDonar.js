@@ -145,7 +145,7 @@ const FindDonar = () => {
             >
               <img
                 className="w-24 rounded-full h-24 donar-profile-img"
-                src="https://i.ibb.co/svZfJ6q/wells-chan-l3hwxn-GJXn8-unsplash.jpg"
+                src={data.image ? data.image : "https://i.ibb.co/svZfJ6q/wells-chan-l3hwxn-GJXn8-unsplash.jpg"}
                 alt="donar profile"
               />
               <div className="donar-text ml-5 text-left">
