@@ -14,6 +14,7 @@ import Address from "./features/Dashboard/Address/Address";
 import Verify from "./features/Dashboard/Verify/Verify";
 import Footer from "./features/Shared/Footer/Footer";
 import AboutUs from "./features/AboutUs/AboutUs";
+import Contact from "./features/Contact/Contact";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="donar" element={<FindDonar />} />
           <Route path='/about' element={<AboutUs />} />
+          <Route path='/contact' element={<Contact />} />
           <Route
             path="become-donar"
             element={
