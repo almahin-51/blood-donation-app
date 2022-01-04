@@ -1,6 +1,8 @@
 import React from "react";
+import useAuth from "../../../Hooks/useAuth";
 
 const Profile = () => {
+  const {user} = useAuth()
   return (
     <div className="w-11/12 mx-auto sm:w-10/12 mt-16 sm:mt-0 shadow-2xl">
       <div className="flex justify-between p-3 border-b-2">
@@ -23,11 +25,11 @@ const Profile = () => {
         </div>
         <div className="mt-4">
           <h3 className="font-bold text-gray-600 text-base">Full name</h3>
-          <h1 className="text-lg">Md Mahin islam</h1>
+          <h1 className="text-lg">{user.displayName}</h1>
           <h3 className="font-bold text-gray-600 text-base mt-2">Email</h3>
-          <h1 className="text-lg">mahin@gmail.com</h1>
+          <h1 className="text-lg">{user.email}</h1>
           <h3 className="font-bold text-gray-600 text-base mt-2">Phone</h3>
-          <h1 className="text-lg">01712342534</h1>
+          <h1 className="text-lg "><small className="text-grey-300">Null</small> </h1>
         </div>
       </div>
     </div>
