@@ -1,5 +1,6 @@
 import React from 'react';
 import useAuth from '../../Hooks/useAuth';
+import Blog from './Blog/Blog';
 import Counter from './Counter/Counter';
 import DonarSection from './DonarSection/DonarSection';
 import Hero from './Hero/Hero';
@@ -14,6 +15,7 @@ const Home = () => {
             <DonarSection />
             <HomeAbout />
             <Counter />
+            <Blog />
         </div>
     );
 };
