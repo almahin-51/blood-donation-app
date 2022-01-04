@@ -9,14 +9,16 @@
 
 .sm-drop-down {
   border: 1px solid #ccc;
+  background-color: #fffffff8;
   box-shadow: 0px 5px 10px 0px #ccc;
   width: 170px;
   padding: 20px;
   border-radius: 5px;
   position: absolute;
   top: 95%;
-  right: 0.5rem;
+  right: 0;
   display: none;
+  text-align: center;
 }
 
 .actives {
@@ -37,13 +39,16 @@
   top: 95%;
   right: 0.5rem;
   display: none;
+  text-align: center;
 }
 .lg-drop-down ul li {
   margin: 5px;
 }
 
-@media (max-width: 425px) {
-  .navbar-nav {
-    display: none;
-  }
+.bd {
+  font-size: 10px;
+  margin-top: -6px;
+}
+
+@media (max-width: 576px) {
 }
