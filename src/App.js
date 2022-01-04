@@ -12,6 +12,7 @@ import Dashboard from "./features/Dashboard/Dashboard";
 import Profile from "./features/Dashboard/Profile/Profile";
 import Address from "./features/Dashboard/Address/Address";
 import Verify from "./features/Dashboard/Verify/Verify";
+import Footer from "./features/Shared/Footer/Footer";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Registration />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
