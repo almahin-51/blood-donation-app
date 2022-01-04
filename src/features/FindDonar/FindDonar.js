@@ -17,12 +17,12 @@ const FindDonar = () => {
     })
     // Filtering Donar From Database 
     useEffect(() => {
-        fetch(`https://evening-river-70665.herokuapp.com/donar/${bloodGroupText}`)
+        fetch(`https://evening-river-70665.herokuapp.com/donar/${districtText}`)
             .then(res => res.json())
             .then(data => setBloodGroup(data))
-    }, [bloodGroupText])
+    }, [districtText])
     const handleDonarSubmit = () => {
-        setDistrict(bloodGroup.filter(data => data.district === districtText))
+        setDistrict(bloodGroup.filter(data => data.group === bloodGroupText))
         setDonar(district.filter(data => data.area.includes(areaText)))
     }
     const handleDonarContact = (phone, email) => {
