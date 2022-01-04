@@ -4,7 +4,7 @@ import useAuth from '../../Hooks/useAuth';
 
 const BecomeDonar = () => {
     const { user } = useAuth()
-    const [donarData, setDonarData] = useState({name: user.displayName, email: user.email})
+    const [donarData, setDonarData] = useState({ name: user.displayName, email: user.email })
     const Toast = Swal.mixin({
         toast: true,
         position: 'center',
@@ -47,11 +47,11 @@ const BecomeDonar = () => {
     }
     return (
         <div>
-            <div className='container mx-auto py-20'>
-                <div className="grid grid-cols-2 gap-4">
+            <div className='container mx-auto py-8 px-5 lg:px-0'>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div className='text-left'>
-                        <h2 className='text-4xl '>Want to be a donar?</h2>
-                        <h3 className='my-5'>Please Register to join as a donar</h3>
+                        <h2 className='text-4xl '>Join our blood donar community.</h2>
+                        <h3 className='my-5 font-medium'>Please Register to join as a donar</h3>
                         <div className="donar-registration">
                             <form onSubmit={handleDonarSubmit}>
                                 <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="text" placeholder='Your Name' defaultValue={user.displayName} name='name' /> <br />

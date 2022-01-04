@@ -17,14 +17,16 @@ const Navbar = () => {
   return (
     <div className="navbar mx-8 sm:mx-16 py-3">
       <div className="navbar-nav flex justify-between items-center">
-        <div className="logo">
-          <h1 className="font-bold text-2xl">
-            B<span className="text-red-500 ml-3">D</span>
-          </h1>
-          <p className="bd">
-            Blood <span className="text-red-500">Donation</span>
-          </p>
-        </div>
+        <Link to={`/`}>
+          <div className="logo">
+            <h1 className="font-bold text-2xl">
+              B<span className="text-red-500 ml-3">D</span>
+            </h1>
+            <p className="bd">
+              Blood <span className="text-red-500">Donation</span>
+            </p>
+          </div>
+        </Link>
         <div className="hidden sm:flex">
           <ul className="flex justify-end">
             <li>
