@@ -1,5 +1,6 @@
 import React from 'react';
 import useAuth from '../../Hooks/useAuth';
+import DonarSection from './DonarSection/DonarSection';
 import Hero from './Hero/Hero';
 import HomeAbout from './HomeAbout/HomeAbout';
 
@@ -9,6 +10,7 @@ const Home = () => {
     return (
         <div>
             <Hero />
+            <DonarSection />
             <HomeAbout />
         </div>
     );
