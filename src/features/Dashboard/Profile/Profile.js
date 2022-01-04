@@ -1,6 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
+import useDonar from "../../../Hooks/useDonar";
 
 const Profile = () => {
+  const {user} = useAuth()
+  const {donar} = useDonar(user.email)
+  console.log(donar);
   return (
     <div className="w-11/12 mx-auto sm:w-10/12 mt-16 sm:mt-0 shadow-2xl">
       <div className="flex justify-between p-3 border-b-2">
@@ -17,17 +23,19 @@ const Profile = () => {
             src="https://v4c8i7k5.rocketcdn.me/wp-content/uploads/2020/08/dad-baby-lying-down-happy-fathers-day-quotes-1024x1024.jpg"
             alt=""
           />
-          <button className="btn hover:bg-red-500 hover:text-white hover:border-red-500 mt-4">
-            Edit Profile
-          </button>
+          <Link to='/become-donar' className="btn inline-block hover:bg-red-500 hover:text-white hover:border-red-500 mt-4">
+            Become a Donar
+          </Link>
         </div>
         <div className="mt-4">
           <h3 className="font-bold text-gray-600 text-base">Full name</h3>
-          <h1 className="text-lg">Md Mahin islam</h1>
+          <h1 className="text-lg">{user.displayName}</h1>
           <h3 className="font-bold text-gray-600 text-base mt-2">Email</h3>
-          <h1 className="text-lg">mahin@gmail.com</h1>
+          <h1 className="text-lg">{user.email}</h1>
           <h3 className="font-bold text-gray-600 text-base mt-2">Phone</h3>
-          <h1 className="text-lg">01712342534</h1>
+          <h1 className="text-lg ">{<small className="text-grey-300">Null</small> || donar?.phone }</h1>
+          <h3 className="font-bold text-gray-600 text-base mt-2">Blood Group</h3>
+          <h1 className="text-lg ">{donar?.group || <small className="text-grey-300">Null</small> }</h1>
         </div>
       </div>
     </div>
