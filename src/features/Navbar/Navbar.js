@@ -77,7 +77,7 @@ const Navbar = () => {
         <ul>
           <p>Welcome {user.displayName}</p>
           <li>
-            <Link to={"/dashboard"}>Dashboard</Link>
+            <Link to={"/dashboard/profile"}>Dashboard</Link>
           </li>
           <Link to="/">
             <button
