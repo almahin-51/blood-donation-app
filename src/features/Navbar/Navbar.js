@@ -83,10 +83,13 @@ const Navbar = () => {
           <li>
             <Link to={"/contact"}>Contact Us</Link>
           </li>
-          <button className=" px-4 py-2 my-2 mx-auto rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200">
+          <li>
+            <Link to={"/dashboard"}>Dashboard</Link>
+          </li>
+          {user.displayName ? <button className="border-2 border-red-400 p-1 rounded-xl">Log Out</button> : <button className=" px-4 py-2 my-2 mx-auto rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200">
             <i className="far fa-user mr-2"></i>
             LogIn
-          </button>
+          </button>}
         </ul>
       </div>
 

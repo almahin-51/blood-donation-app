@@ -31,7 +31,7 @@ const FindDonar = () => {
             html: `<b>Phone:</b> ${phone} <br/> <b>Email:</b> ${email}`,
         })
     }
-    console.log(donar)
+    console.log(donar, district)
     return (
         <div>
             <div className="container mx-auto py-14 px-5 lg:px-1">

@@ -19,6 +19,7 @@
   right: 0;
   display: none;
   text-align: center;
+  z-index: 11;
 }
 
 .actives {
