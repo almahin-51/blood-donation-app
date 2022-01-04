@@ -42,7 +42,7 @@ const Dashboard = () => {
               Verify
             </NavLink>
           </li>
-          <button>
+          <li>
             <i className="fas fa-sign-out-alt mr-3"></i>
             <Link to={"/dashboard/profile"}>
               <i class="fas fa-user mr-3"></i>
