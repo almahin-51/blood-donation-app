@@ -91,7 +91,7 @@ const useFirebase = () => {
         const user = { email, displayName }
         console.log(email);
         console.log(displayName);
-        fetch('http://localhost:3002/users', {
+        fetch('https://evening-river-70665.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
