@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 import useFirebase from "../../Hooks/useFirebase";
 import "./Navbar.css";
 
@@ -8,7 +9,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(true);
   const [toggle2, setToggle2] = useState(false);
 
-  const { user, logOut } = useFirebase()
+  const { user, logOut } = useAuth()
   return (
     <div className="navbar mx-8 sm:mx-16 mt-4">
       <div className="navbar-nav flex justify-between items-center">
@@ -35,13 +36,11 @@ const Navbar = () => {
               <Link to={"/contact"}>Contact Us</Link>
             </li>
           </ul>
-          <button
+          {user.email ? <img src={user.photoURL} alt="" />:<button
             onClick={() => setToggle(!toggle)}
-            className=" px-4 py-2 my-2 mr-2 rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200"
-          >
-            <i className="far fa-user mr-2"></i>
-            LogIn
-          </button>
+            className=" px-4 py-2 my-2 mr-2 rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200">
+             <p><i className="far fa-user mr-2"></i>LogIn</p>
+          </button>}
         </div>
         <div
           onClick={() => setToggle2(!toggle2)}

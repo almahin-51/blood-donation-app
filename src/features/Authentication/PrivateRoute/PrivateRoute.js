@@ -1,10 +1,9 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import useFirebase from '../../../Hooks/useFirebase';
-
+import useAuth from '../../../Hooks/useAuth';
 const PrivateRoute = ({ children }) => {
     const location = useLocation()
-    const { user, isLoading } = useFirebase()
+    const { user, isLoading } = useAuth()
     if (isLoading) {
         return <div>
             <h2 className='text-4xl text-red-500 text-center font-medium py-30'>Loading...</h2>

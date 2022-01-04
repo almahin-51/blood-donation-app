@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import useFirebase from '../../../Hooks/useFirebase';
 import { FcGoogle } from "react-icons/fc";
+import useAuth from '../../../Hooks/useAuth';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({})
-    const { loginUser, error, signInWithGoogle } = useFirebase()
+    const { loginUser, error, signInWithGoogle } = useAuth()
 
     const location = useLocation()
     const navigate = useNavigate()

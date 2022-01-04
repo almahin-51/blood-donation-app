@@ -8,7 +8,6 @@ const useFirebase = () => {
     const [user, setUser] = useState({})
     const [error, setError] = useState('')
     const [isLoading, setIsLoading] = useState(true)
-
     // get auth 
     const auth = getAuth()
     const googleProvider = new GoogleAuthProvider()
@@ -54,6 +53,7 @@ const useFirebase = () => {
             .then(result => {
                 const user = result.user;
                 //save user to database
+                setUser(user)
                 saveUser(user.email, user.displayName, 'PUT')
                 setError('')
                 const destination = location?.state?.from || '/';
@@ -68,8 +68,10 @@ const useFirebase = () => {
         const unSubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
+                // dispatch(authUser(user))
             } else {
                 setUser({})
+                // dispatch(authUser(user))
             }
             setIsLoading(false)
         })
@@ -87,7 +89,9 @@ const useFirebase = () => {
     // save user to database
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName }
-        fetch('http://localhost:5000/users', {
+        console.log(email);
+        console.log(displayName);
+        fetch('http://localhost:3002/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

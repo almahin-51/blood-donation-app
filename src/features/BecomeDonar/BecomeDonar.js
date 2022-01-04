@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2'
-import useFirebase from '../../Hooks/useFirebase';
+import useAuth from '../../Hooks/useAuth';
 
 const BecomeDonar = () => {
     const [donarData, setDonarData] = useState({})
-    const { user } = useFirebase()
+    const { user } = useAuth()
     const Toast = Swal.mixin({
         toast: true,
         position: 'center',

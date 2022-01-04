@@ -1,21 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Slider from '../Slider/Slider';
+import useAuth from '../../Hooks/useAuth';
 
 const Home = () => {
-    // const data ={
-    //     name: 'sakil',
-    //     group: 'a+',
-    //     district: 'cumilla',
-    //     area: 'sadar road'
-    // }
-    // fetch('https://evening-river-70665.herokuapp.com/donar',{
-    //     method: "POST",
-    //     headers: {
-    //         'content-type': 'application/json'
-    //     },
-    //     body: JSON.stringify(data)
-    // })
+    const {user} = useAuth()
+    console.log(user);
     return (
         <div>
             <h1>HomePage</h1>
