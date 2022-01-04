@@ -23,9 +23,11 @@ const Profile = () => {
             src={user.photoURL || "https://i.postimg.cc/FHjjxnrd/images.png"}
             alt=""
           />
-          <Link to='/become-donar' className="btn inline-block hover:bg-red-500 hover:text-white hover:border-red-500 mt-4 transition-all duration-300 font-semibold">
-            Become a Donar
-          </Link>
+          {
+            donar.group ? <button className="mt-3">Verified Donar<i class="fas fa-check text-blue-500 ml-2"></i></button> : <Link to='/become-donar' className="btn inline-block hover:bg-red-500 hover:text-white hover:border-red-500 mt-4 transition-all duration-300 font-semibold">
+              Become a Donar
+            </Link>
+          }
         </div>
         <div className="mt-4">
           <h3 className="font-bold text-gray-600 text-base">Full name</h3>
@@ -33,9 +35,9 @@ const Profile = () => {
           <h3 className="font-bold text-gray-600 text-base mt-2">Email</h3>
           <h1 className="text-lg">{user.email}</h1>
           <h3 className="font-bold text-gray-600 text-base mt-2">Phone</h3>
-          <h1 className="text-lg ">{donar?.phone || <small className="text-grey-300">Null</small>}</h1>
+          <h1 className="text-lg">{donar?.phone || <small className="text-grey-300">Null</small>}</h1>
           <h3 className="font-bold text-gray-600 text-base mt-2">Blood Group</h3>
-          <h1 className="text-lg ">{donar?.group || <small className="text-grey-300">Null</small>}</h1>
+          <h1 className="text-lg uppercase">{donar?.group || <small className="text-grey-300">Null</small>}</h1>
         </div>
       </div>
     </div>
