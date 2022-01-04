@@ -3,10 +3,10 @@ import React from 'react';
 const HomeAbout = () => {
     return (
         <div>
-            <div className="container mx-auto py-20">
-                <div className="grid grid-cols-2 gap-4">
+            <div className="container mx-auto py-20 px-5 lg:px-0">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div className="about-text">
-                        <h3 className='text-4xl mb-5 font-semibold'>What is Blood Donation BD? <span className='block w-28 h-1 bg-red-400 mt-1'></span></h3>
+                        <h3 className='lg:text-4xl text-3xl mb-5 font-semibold'>What is Blood Donation BD? <span className='block w-28 h-1 bg-red-400 mt-1'></span></h3>
 
                         <p>We are a team to serve the nation. Blood is an essential part of our body. And it is very important when anyone is sick or something else.Currently we are working with blood donation and in future we will be work all around the world.With the help of this website anyone can find his desire blood group in his local area. </p>
                         <div className='ml-5 mt-5'>
