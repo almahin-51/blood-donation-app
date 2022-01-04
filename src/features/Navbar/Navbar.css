@@ -31,12 +31,13 @@
 
 .lg-drop-down {
   border: 1px solid #ccc;
-  box-shadow: 0px 5px 10px 0px #ccc;
+  box-shadow: 0px 5px 10px 0px rgb(43, 43, 43, 0.5);
   background: rgb(238, 238, 238);
   width: 170px;
   padding: 20px;
   border-radius: 5px;
   position: absolute;
+  z-index: 11;
   top: 95%;
   right: 0.5rem;
   display: none;
