@@ -19,8 +19,8 @@ const Profile = () => {
       <div className="md:flex px-12 py-4 sm:space-x-16">
         <div className="img w-48 text-center mx-auto md:mx-0 mt-6 sm:mt-0">
           <img
-            className="rounded-full"
-            src="https://v4c8i7k5.rocketcdn.me/wp-content/uploads/2020/08/dad-baby-lying-down-happy-fathers-day-quotes-1024x1024.jpg"
+            className="profile-img"
+            src= {user.photoURL || "https://i.postimg.cc/FHjjxnrd/images.png" }
             alt=""
           />
           <Link to='/become-donar' className="btn inline-block hover:bg-red-500 hover:text-white hover:border-red-500 mt-4">
