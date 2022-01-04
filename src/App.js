@@ -8,6 +8,9 @@ import Login from "./features/Authentication/Login/Login";
 import Registration from "./features/Authentication/Registration/Registration";
 import BecomeDonar from "./features/BecomeDonar/BecomeDonar";
 import Dashboard from "./features/Dashboard/Dashboard";
+import PrivateRoute from './features/Authentication/PrivateRoute/PrivateRoute';
+import Registration from './features/Authentication/Registration/Registration';
+
 
 function App() {
   return (
@@ -17,10 +20,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="find-donar" element={<FindDonar />} />
-          <Route path="become-donar" element={<BecomeDonar />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Registration />} />
+          <Route path='home' element={<Home />} />
+          <Route path='donar' element={<FindDonar />} />
+          <Route path='become-donar' element={<PrivateRoute><BecomeDonar /></PrivateRoute>} />
+          <Route path='login' element={<Login />} />
+          <Route path='register' element={<Registration />} />
         </Routes>
       </BrowserRouter>
     </div>

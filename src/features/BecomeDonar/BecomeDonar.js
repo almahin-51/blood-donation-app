@@ -1,25 +1,27 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2'
+import useFirebase from '../../Hooks/useFirebase';
 
 const BecomeDonar = () => {
     const [donarData, setDonarData] = useState({})
+    const { user } = useFirebase()
     const Toast = Swal.mixin({
         toast: true,
         position: 'center',
         showConfirmButton: false,
-        timer: 3000,
+        timer: 5000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
-      })
-      
+    })
+
     // handle form submit 
     const takeDonarData = e => {
         const key = e.target.name;
         const value = e.target.value;
-        const newValue = {...donarData}
+        const newValue = { ...donarData }
         newValue[key] = value;
         setDonarData(newValue)
     }
@@ -33,14 +35,14 @@ const BecomeDonar = () => {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data)
         }).then(res => res.json())
-        .then(data => {
-            if (data.insertedId) {
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Signed in successfully'
-                  })
-            }
-        })
+            .then(data => {
+                if (data.insertedId) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Congratulations! You are succesfully done.'
+                    })
+                }
+            })
         e.preventDefault()
     }
     return (
@@ -52,8 +54,8 @@ const BecomeDonar = () => {
                         <h3 className='my-5'>Please Register to join as a donar</h3>
                         <div className="donar-registration">
                             <form onSubmit={handleDonarSubmit}>
-                                <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="text" placeholder='Your Name' name='name'/> <br />
-                                <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="email" placeholder='Your Email' name='email'/> <br />
+                                <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="text" placeholder='Your Name' defaultValue={user.displayName} name='name' /> <br />
+                                <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="email" placeholder='Your Email' defaultValue={user.email} name='email' /> <br />
                                 <input required onChange={takeDonarData} className='border-b-2 border-red-200 rounded-full w-3/4 h-10 mb-5 pl-5 focus:outline-none' type="number" placeholder='Your Number' name='phone' /> <br />
                                 <label className='mb-1 inline-block' htmlFor="blood">Your Blood Group</label><br />
                                 <select required onChange={takeDonarData} name="group" id="blood">
@@ -133,9 +135,9 @@ const BecomeDonar = () => {
                                     <option value='Sunamganj'>Sunamganj</option>
                                     <option value='Sylhet'>Sylhet</option>
                                     <option value='Tangail'>Tangail</option>
-                                    <option value='Thakurgaon'>Thakurgaon</option>                                
-                                    </select> <br />
-                                <label className='mt-3 mb-1 inline-block' htmlFor="area" >Area*</label> <br />
+                                    <option value='Thakurgaon'>Thakurgaon</option>
+                                </select> <br />
+                                <label className='mt-3 mb-1 inline-block' htmlFor="area" >Location/Area*</label> <br />
                                 <textarea required onChange={takeDonarData} className='border-2 p-2 border-red-200 rounded w-1/2 h-12 focus:outline-none' name="area" id="area"></textarea> <br />
                                 <button className='mt-5 bg-red-400 text-white px-8 py-2 rounded' type='submit'>Submit Information</button>
                             </form>
