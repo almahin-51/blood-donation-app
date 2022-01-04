@@ -1,15 +1,12 @@
 import React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-import useFirebase from "../../Hooks/useFirebase";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const [toggle, setToggle] = useState(true);
-  const [toggle2, setToggle2] = useState(false);
-
-  const { user, logOut } = useAuth();
+  const { user, logOut, toggle, toggle2, setToggle, setToggle2, handleClick } =
+    useAuth();
   const handleLogOut = () => {
     logOut();
     setToggle(!toggle);
@@ -17,7 +14,7 @@ const Navbar = () => {
   return (
     <div className="navbar mx-8 sm:mx-16 py-3">
       <div className="navbar-nav flex justify-between items-center">
-        <Link to={`/`}>
+        <Link to={`/`} onClick={handleClick}>
           <div className="logo">
             <h1 className="font-bold text-2xl">
               B<span className="text-red-500 ml-3">D</span>
@@ -28,7 +25,7 @@ const Navbar = () => {
           </div>
         </Link>
         <div className="hidden sm:flex">
-          <ul className="flex justify-end">
+          <ul className="flex justify-end" onClick={handleClick}>
             <li>
               <Link to={"/home"}>Home</Link>
             </li>
@@ -90,7 +87,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className={toggle ? "lg-drop-down" : "lg-drop-down actives"}>
+      <div className={toggle ? "lg-drop-down actives" : "lg-drop-down"}>
         <ul>
           <li>
             <Link to={"/dashboard/profile"}>Dashboard</Link>
