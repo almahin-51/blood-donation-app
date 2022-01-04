@@ -1,0 +1,16 @@
+.slide-bg{
+    background-image: url('https://i.ibb.co/SKnVyTt/home-1-slider-1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90vh;
+}
+.hero-area{
+    position: relative;
+}
+.hero-text{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+}

@@ -12,6 +12,9 @@ import Dashboard from "./features/Dashboard/Dashboard";
 import Profile from "./features/Dashboard/Profile/Profile";
 import Address from "./features/Dashboard/Address/Address";
 import Verify from "./features/Dashboard/Verify/Verify";
+import Footer from "./features/Shared/Footer/Footer";
+import AboutUs from "./features/AboutUs/AboutUs";
+import Contact from "./features/Contact/Contact";
 
 function App() {
   return (
@@ -20,6 +23,34 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="home" element={<Home />} />
+          <Route path="donar" element={<FindDonar />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="become-donar"
+            element={
+              <PrivateRoute>
+                <BecomeDonar />
+              </PrivateRoute>
+            }
+          />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Registration />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          >
+            <Route exact path="/dashboard" element={<Profile />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="address" element={<Address />} />
+            <Route path="verify" element={<Verify />} />
+          </Route>
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="home" element={<Home />} />
           <Route path="donar" element={<FindDonar />} />
           <Route
@@ -32,13 +63,8 @@ function App() {
           />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Registration />} />
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route exact path="/dashboard" element={<Profile />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="address" element={<Address />} />
-            <Route path="verify" element={<Verify />} />
-          </Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

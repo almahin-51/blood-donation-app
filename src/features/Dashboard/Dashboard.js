@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 import "./Dashboard.css";
-
 const Dashboard = () => {
+  const { logOut } = useAuth();
   return (
     <div className="dashboard sm:flex mx-2 md:mx-12 sm:space-x-3 my-5">
       <div className="aside w-11/12 mx-auto mt-6 sm:mt-0 sm:w-64 rounded-md shadow-2xl sm:mx-0">
