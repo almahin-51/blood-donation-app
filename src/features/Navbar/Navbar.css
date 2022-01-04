@@ -32,6 +32,7 @@
 .lg-drop-down {
   border: 1px solid #ccc;
   box-shadow: 0px 5px 10px 0px #ccc;
+  background: rgb(238, 238, 238);
   width: 170px;
   padding: 20px;
   border-radius: 5px;
@@ -43,6 +44,9 @@
 }
 .lg-drop-down ul li {
   margin: 5px;
+}
+.lg-drop-down ul li a:hover {
+  color: rgb(255, 36, 36);
 }
 
 .bd {
