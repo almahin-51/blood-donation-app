@@ -22,7 +22,7 @@ const Blog = () => {
                         <img className='h-80 w-full' src="https://image.freepik.com/free-photo/you-can-help-give-welfare-donate-concept_53876-121039.jpg" alt="blog images" />
                         <div className="blog-text p-5">
                             <h3 className='text-2xl capitalize font-semibold mb-2'>We can change the world together</h3>
-                            <h4 className='mb-2 text-sm'><i class="far fa-clock text-red-500"></i> 04 Jan,2022</h4>
+                            <h4 className='mb-2 text-sm'><i class="far fa-clock text-red-500"></i> 23 feb,2022</h4>
                             <p>Blood is a essential part of our body. Everyone needs blood when they are sick.So we all should share our blood to save one's life.It is a kind of social work.</p>
                             <button className='mt-5 text-red-500 text-lg'>Read More..</button>
                         </div>
@@ -31,7 +31,7 @@ const Blog = () => {
                         <img className='h-80 w-full' src="https://image.freepik.com/free-photo/doctor-holding-blood-test-tube_53876-94745.jpg" alt="blog images" />
                         <div className="blog-text p-5">
                             <h3 className='text-2xl capitalize font-semibold mb-2'>Pure blood needs for body</h3>
-                            <h4 className='mb-2 text-sm'><i class="far fa-clock text-red-500"></i> 04 Jan,2022</h4>
+                            <h4 className='mb-2 text-sm'><i class="far fa-clock text-red-500"></i> 13 Jan,2022</h4>
                             <p>Blood is a essential part of our body. Everyone needs blood when they are sick.So we all should share our blood to save one's life.It is a kind of social work.</p>
                             <button className='mt-5 text-red-500 text-lg'>Read More..</button>
                         </div>
