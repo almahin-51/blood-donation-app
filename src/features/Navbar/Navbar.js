@@ -40,9 +40,9 @@ const Navbar = () => {
               <Link to={"/contact"}>Contact Us</Link>
             </li>
           </ul>
-          {user.displayName ? <img onClick={() => setToggle(!toggle)} className="nav-profile-img" src={user.photoURL || "https://i.postimg.cc/FHjjxnrd/images.png" } alt="" />:<Link to='/login'
+          {user.displayName ? <img onClick={() => setToggle(!toggle)} className="nav-profile-img" src={user.photoURL || "https://i.postimg.cc/FHjjxnrd/images.png"} alt="" /> : <Link to='/login'
             className=" px-4 py-2 my-2 mr-2 rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200">
-             <p><i className="far fa-user mr-2"></i>LogIn</p>
+            <p><i className="far fa-user mr-2"></i>LogIn</p>
           </Link>}
         </div>
         <div
