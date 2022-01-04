@@ -7,6 +7,7 @@ import "./Navbar.css";
 const Navbar = () => {
   const [toggle, setToggle] = useState(true);
   const [toggle2, setToggle2] = useState(false);
+
   const { user, logOut } = useFirebase()
   return (
     <div className="navbar mx-8 sm:mx-16 mt-4">
