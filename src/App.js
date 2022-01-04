@@ -38,6 +38,12 @@ function App() {
             <Route path="address" element={<Address />} />
             <Route path="verify" element={<Verify />} />
           </Route>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path='home' element={<Home />} />
+          <Route path='donar' element={<FindDonar />} />
+          <Route path='become-donar' element={<PrivateRoute><BecomeDonar /></PrivateRoute>} />
+          <Route path='login' element={<Login />} />
+          <Route path='register' element={<Registration />} />
         </Routes>
       </BrowserRouter>
     </div>

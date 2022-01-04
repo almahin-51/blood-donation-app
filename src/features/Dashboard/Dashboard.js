@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Dashboard.css";
+import Profile from "./Profile/Profile";
 
 const Dashboard = () => {
   return (
@@ -42,11 +44,31 @@ const Dashboard = () => {
           </li>
           <button>
             <i className="fas fa-sign-out-alt mr-3"></i>
+            <Link to={"/dashboard/profile"}>
+              <i class="fas fa-user mr-3"></i>
+              Profile
+            </Link>
+          </li>
+          <li>
+            <Link to={"/dashboard/address"}>
+              <i class="fas fa-map-marker-alt mr-3"></i>
+              Address
+            </Link>
+          </li>
+          <li>
+            <Link to={"/dashboard/verify"}>
+              <i class="fas fa-user-check mr-2"></i>
+              Verify
+            </Link>
+          </li>
+          <button>
+            <i class="fas fa-sign-out-alt mr-3"></i>
             LogOut
           </button>
         </ul>
       </div>
       <Outlet />
+      <Profile />
     </div>
   );
 };
