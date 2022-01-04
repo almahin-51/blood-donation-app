@@ -33,7 +33,7 @@ const Profile = () => {
           <h3 className="font-bold text-gray-600 text-base mt-2">Email</h3>
           <h1 className="text-lg">{user.email}</h1>
           <h3 className="font-bold text-gray-600 text-base mt-2">Phone</h3>
-          <h1 className="text-lg ">{<small className="text-grey-300">Null</small> || donar?.phone }</h1>
+          <h1 className="text-lg ">{ donar?.phone ||<small className="text-grey-300">Null</small>  }</h1>
           <h3 className="font-bold text-gray-600 text-base mt-2">Blood Group</h3>
           <h1 className="text-lg ">{donar?.group || <small className="text-grey-300">Null</small> }</h1>
         </div>

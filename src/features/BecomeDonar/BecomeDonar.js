@@ -3,8 +3,8 @@ import Swal from 'sweetalert2'
 import useAuth from '../../Hooks/useAuth';
 
 const BecomeDonar = () => {
-    const [donarData, setDonarData] = useState({})
     const { user } = useAuth()
+    const [donarData, setDonarData] = useState({name: user.displayName, email: user.email})
     const Toast = Swal.mixin({
         toast: true,
         position: 'center',
